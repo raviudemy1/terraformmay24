@@ -5,5 +5,6 @@ resource "aws_instance" "example" {
  ami = "ami-053a617c6207ecc7b"
  instance_type = "t2.micro"
  }
- 
- 
+resource "aws_s3_bucket" "example" {
+ bucket="prasanna_s3bucket"
+} 
