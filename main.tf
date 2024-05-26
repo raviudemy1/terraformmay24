@@ -1,24 +1,36 @@
 provider "aws" {
  region = "eu-west-2"
  }
-# create s3 bucket to store remote state file #
-resource "aws_s3_bucket" "example" {
- bucket = "prasanna-s3-remotestate"
+data "aws_availability_zones" "example" {
+ state = "available"
  }
-# create a dynamodb table for locking the state file#
-resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {
- name           = "terraform-state-lock-dynamo"
- hash-key       = "LockID"
- read_capacity  = 20
- write_capacity = 20
- attribute {
-  name = "LockID"
-  type = "S"
-  }
-  tags = {
-   Name = "DynamoDB Terraform state Lock Table"
-  }
- } 
+data "aws_instances" "test"  {
+ filter {
+  name = "instance-type"
+  values = ["t2.micro","t2.small"]
+ }
+ instance_state_names = ["running" "stopped"]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
