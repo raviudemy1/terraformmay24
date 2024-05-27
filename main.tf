@@ -9,6 +9,7 @@ data "aws_instances" "test"  {
   name = "instance-type"
   values = ["t2.micro","t2.small"]
  }
+
  instance_state_names = ["running" "stopped"]
 }
 
